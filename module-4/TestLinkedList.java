@@ -4,6 +4,22 @@ October 4, 2026
 Assignment 4.2
 
 Tests the time it takes to traverse a LinkedList using iterator versus get(index)
+
+Results:
+	50,000 elements: iterator = 2 ms, get(index) = 707 ms
+	500,000 elements: iterator = 4 ms, get(index) = 71,602 ms
+
+Traversing with an iterator is fast because it keeps track of its current node and moves
+to the next one in a single step, so the total work is O(n).
+Going from 50,000 to 500,000 elements, the iterator time stayed very short.
+
+Traversing with get(index) is much slower because a LinkedList has no random access.
+Every get(i) call starts at the head or tail and follows links until it reaches index i,
+so looping over the whole list is O(n^2). Making the list 10x bigger made the get(index)
+about 100x slower.
+
+At 500,000 elements, get(index) took about 71 seconds versus 4 ms for the iterator.
+For a LinkedList, an iterator should be used for traversal.
 */
 import java.util.LinkedList;
 import java.util.Iterator;
